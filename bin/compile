@@ -26,7 +26,7 @@ shopt -s dotglob
 
 INSTALL_DB2=0
 
-if [[ "${input}" == *BLUAcceleration* ]] || [[ "${input}" == *SQLDB* ]] || [[ $ZEND_DB2_DRIVER == 1 ]]; then
+if [[ "${VCAP_SERVICES}" == *BLUAcceleration* ]] || [[ "${VCAP_SERVICES}" == *SQLDB* ]] || [[ $ZEND_DB2_DRIVER == 1 ]]; then
     ZS_PATCHES="$ZS_PATCHES ZCLOUD-181"
     INSTALL_DB2=1
 fi
