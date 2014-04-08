@@ -14,7 +14,7 @@ export ZS_EDITION=TRIAL
 ZS_MANAGE=/app/zend-server-6-php-5.4/bin/zs-manage
 
 # Set env. variables for DB2 if needed
-if [[ $ZEND_DB2_DRIVER == 1 ]]; then
+if [[ $DB2_INSTALL == 1 ]]; then
     export LD_LIBRARY_PATH=/app/clidriver/lib:$LD_LIBRARY_PATH
     export IBM_DB_HOME=/app/clidriver
 fi
