@@ -28,6 +28,10 @@ echo "here"
 echo $VCAP_SERVICES
 echo $SERVICES
 
+if [[ $VCAP_SERVICES contains "BLUAcceleration" ] -o [ $VCAP_SERVICES contains "SQLDB" ]]; then
+    echo "service found"
+fi
+
 if [[ $ZEND_DB2_DRIVER == 1 ]]; then
     ZS_PATCHES="$ZS_PATCHES ZCLOUD-181"
 fi
