@@ -24,16 +24,11 @@ ZS_PATCHES="ZCLOUD-147 ZSRV-11471 ZSRV-11843 ZCLOUD-131 ZCLOUD-168"
 # include .files when moving things around
 shopt -s dotglob
 
-echo "here"
-echo $VCAP_SERVICES
-echo $SERVICES
+INSTALL_DB2=0
 
-if [[ $VCAP_SERVICES contains "BLUAcceleration" ] -o [ $VCAP_SERVICES contains "SQLDB" ]]; then
-    echo "service found"
-fi
-
-if [[ $ZEND_DB2_DRIVER == 1 ]]; then
+if [[ "${input}" == *BLUAcceleration* ]] || [[ "${input}" == *SQLDB* ]] || [[ $ZEND_DB2_DRIVER == 1 ]]; then
     ZS_PATCHES="$ZS_PATCHES ZCLOUD-181"
+    INSTALL_DB2=1
 fi
 
 START_MSG 'Initializing'
@@ -60,7 +55,7 @@ if [[ ! -f $CACHE_DIR/zend-server-6.2-php-5.4-nginx.tar.xz ]]; then
     DONE_MSG
 fi
 
-if [[ ! -f $CACHE_DIR/clidriver.tar.gz && $ZEND_DB2_DRIVER == 1 ]]; then
+if [[ ! -f $CACHE_DIR/clidriver.tar.gz && $INSTALL_DB2 == 1 ]]; then
     START_MSG 'Downloading IBM DB2 Runtime Client'
     curl -s -O http://repos.zend.com/cloudfoundry/clidriver.tar.gz
     DONE_MSG
