@@ -95,7 +95,7 @@ START_MSG "Unpacking nginx"
 tar xzf $CACHE_DIR/nginx.tar.gz
 DONE_MSG
 
-if [[ $ZEND_DB2_DRIVER == 1 ]]; then
+if [[ $INSTALL_DB2 == 1 ]]; then
     START_MSG "Unpacking IBM DB2 Runtime Client"
     tar xzf $CACHE_DIR/clidriver.tar.gz
     DONE_MSG
