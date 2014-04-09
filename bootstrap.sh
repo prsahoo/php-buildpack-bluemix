@@ -13,9 +13,6 @@ export ZEND_GID=`id -g`
 export ZS_EDITION=TRIAL
 ZS_MANAGE=/app/zend-server-6-php-5.4/bin/zs-manage
 
-echo "booting from here"
-echo $VCAP_SERVICES
-
 # Set env. variables for DB2 if needed
 if [[ "${VCAP_SERVICES}" == *BLUAcceleration* ]] || [[ "${VCAP_SERVICES}" == *SQLDB* ]] || [[ $ZEND_DB2_DRIVER == 1 ]]; then
     export LD_LIBRARY_PATH=/app/clidriver/lib:$LD_LIBRARY_PATH
